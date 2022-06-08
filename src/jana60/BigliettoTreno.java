@@ -1,5 +1,6 @@
 package jana60;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class BigliettoTreno {
@@ -12,8 +13,9 @@ public class BigliettoTreno {
 		float scontoMinorenni;
 		float scontoOver65;
 		
-		//inizializzo scanner
+		//inizializzo scanner e decimal format
 		Scanner scan = new Scanner(System.in);
+		DecimalFormat df = new DecimalFormat ("#0.##");
 		
 		//chiedo input all'utente
 		System.out.println("Chilometri da percorrere:");
@@ -31,21 +33,21 @@ public class BigliettoTreno {
 			//calcolo sconto minorenni
 			if (anniPasseggero < 18) {
 				scontoMinorenni = prezzoBiglietto - (prezzoBiglietto * 0.2f);
-				System.out.println("Normalmente il prezzo del biglietto sarebbe: " + prezzoBiglietto + " euro");
+				System.out.println("Normalmente il prezzo del biglietto sarebbe: " + df.format(prezzoBiglietto) + " euro");
 				System.out.println("Verrá applicato un sconto del 20% riservato ai minorenni. Il prezzo del biglietto é quindi:");
-				System.out.println(scontoMinorenni + " euro");
+				System.out.println(df.format(scontoMinorenni) + " euro");
 				
 			//calcolo sconto over 65
 			} else if (anniPasseggero > 65) {
 				scontoOver65 = prezzoBiglietto - (prezzoBiglietto * 0.4f);
-				System.out.println("Normalmente il prezzo del biglietto sarebbe: " + prezzoBiglietto + " euro");
+				System.out.println("Normalmente il prezzo del biglietto sarebbe: " + df.format(prezzoBiglietto) + " euro");
 				System.out.println(
 						"Verrá applicato uno sconto del 40% riservato agli over 65. Il prezzo del biglietto é quindi:");
-				System.out.println(scontoOver65 + " euro");
+				System.out.println(df.format(scontoOver65) + " euro");
 			
 			//prezzo in qualsiasi altro caso
 			} else {
-				System.out.println("Il prezzo del biglietto é: " + prezzoBiglietto);
+				System.out.println("Il prezzo del biglietto é: " + df.format(prezzoBiglietto));
 			} 
 			
 		//messaggio in caso i dati inseriti non siano validi
